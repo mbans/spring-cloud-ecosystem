@@ -3,6 +3,7 @@ package com.mbans.sandbox.springcloud.product;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class ProductController {
         return Optional.ofNullable(properties.getProduct(product)).orElse("Invalid product " + product);
     }
 
+    @RefreshScope
     @Component
     public static class ProductProperties implements InitializingBean {
 

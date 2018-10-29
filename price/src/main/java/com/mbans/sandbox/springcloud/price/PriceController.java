@@ -1,6 +1,7 @@
 package com.mbans.sandbox.springcloud.price;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class PriceController {
     @Autowired
     private PriceProperties properties;
 
+    @RefreshScope
     @RequestMapping("/{product}")
     public String getPrice(@PathVariable String product) {
         String price = properties.getPrice(product);
